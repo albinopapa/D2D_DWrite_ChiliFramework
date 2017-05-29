@@ -13,6 +13,11 @@ DWrite::DWrite()
 		throw std::runtime_error( "Failed to create DWrite factory." );
 }
 
+IDWriteFactory * DWrite::operator->()const
+{
+	return pFactory.Get();
+}
+
 
 Font::Font(
 	DWrite &Dwrite,
@@ -33,7 +38,7 @@ Font::Font(
 {
 	Microsoft::WRL::ComPtr<IDWriteTextFormat> pFormat;
 	HRESULT hr;
-	if( FAILED( hr = Dwrite.pFactory->CreateTextFormat(
+	if( FAILED( hr = Dwrite->CreateTextFormat(
 		FontName.c_str(), nullptr, Weight, Style, Stretch, FontSize, Locale.c_str(), &pFormat ) ) )
 	{
 		throw std::runtime_error( "Failed to create text format." );

@@ -37,15 +37,8 @@ class DWrite
 public:
 	DWrite();
 
+	IDWriteFactory *operator->()const;
 private:
-	friend Font::Font(
-		DWrite &Dwrite,
-		const std::wstring &FontName,
-		float FontSize = 16.f,
-		DWRITE_FONT_WEIGHT Weight = DWRITE_FONT_WEIGHT_NORMAL,
-		DWRITE_FONT_STYLE Style = DWRITE_FONT_STYLE_NORMAL,
-		DWRITE_FONT_STRETCH Stretch = DWRITE_FONT_STRETCH_NORMAL,
-		const std::wstring &Locale = L"en-us" );
 	Microsoft::WRL::ComPtr<IDWriteFactory> pFactory;
 };
 

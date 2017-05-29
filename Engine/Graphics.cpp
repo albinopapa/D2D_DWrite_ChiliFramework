@@ -58,7 +58,7 @@ Graphics::Graphics( HWNDKey& key )
 void Graphics::DrawString( const std::wstring & Str, const RectF & Rect, const Font & F, Color C )
 {	
 	pBrush2d->SetColor( ConvertColor( C ) );
-	pContext2d->DrawText( Str.c_str(), Str.length(), F, Rect, pBrush2d.Get() );
+	pContext2d->DrawText( Str.c_str(), static_cast< UINT32 >( Str.length() ), F, Rect, pBrush2d.Get() );
 }
 
 Graphics::~Graphics()

@@ -50,10 +50,10 @@ float Vec2::GetLengthSq() const
 Vec2& Vec2::Normalize()
 {
 	const float len = GetLength();
-	if( len != 0.0f )
-	{
-		return *this * ( 1.0f / len );
-	}
+
+	*this = ( len != 0.f ) ? *this * ( 1.f / len ) : *this;
+
+	return *this;
 }
 
 Vec2 Vec2::Normalize() const
